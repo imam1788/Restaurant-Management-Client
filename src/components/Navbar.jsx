@@ -1,16 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("Logged out successfully");
+      })
+      .catch((error) => {
+        toast.error("Logout failed: " + error.message);
+      });
+  };
+
   return (
     <nav className="navbar bg-base-100 shadow-md px-4 py-3">
-      
       <div className="navbar-start">
         <NavLink to="/" className="text-3xl font-bold text-green-600">
-           Resto
+          Resto
         </NavLink>
       </div>
 
-      
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-4 font-semibold">
           <li><NavLink to="/">Home</NavLink></li>
@@ -19,19 +32,30 @@ const Navbar = () => {
         </ul>
       </div>
 
-      
-      <div className="navbar-end gap-4">
-        
-        <img
-          src="https://i.pravatar.cc/40" 
-          alt="Profile"
-          className="w-10 h-10 rounded-full border hidden" 
-        />
-
-        
-        <button className="btn btn-sm btn-primary">Login</button>
-
-        
+      <div className="navbar-end gap-4 items-center">
+        {user ? (
+          <>
+            {/* Show profile image if available */}
+            <img
+              src={user.photoURL || "https://i.pravatar.cc/40"} // fallback avatar
+              alt="Profile"
+              title={user.displayName || "User"}
+              className="w-10 h-10 rounded-full border"
+            />
+            {/* Logout button */}
+            <button
+              onClick={handleLogout}
+              className="btn btn-sm btn-outline btn-error"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          // Show login button if not logged in
+          <Link to="/login" className="btn btn-sm btn-primary">
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );
