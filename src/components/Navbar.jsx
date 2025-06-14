@@ -19,10 +19,15 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-base-100 shadow-md px-4 py-3">
       <div className="navbar-start">
-        <NavLink to="/" className="text-3xl font-bold text-green-600">
-          Resto
+        <NavLink
+          to="/"
+          className="text-4xl font-extrabold tracking-wide text-green-600 hover:text-green-800 transition duration-300"
+        >
+          <span className="text-black">Re</span>
+          <span className="text-green-600">sto</span>
         </NavLink>
       </div>
+
 
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-4 font-semibold">
