@@ -31,32 +31,78 @@ const Navbar = () => {
 
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-4 font-semibold">
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/all-foods">All Foods</NavLink></li>
-          <li><NavLink to="/gallery">Gallery</NavLink></li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-400 font-bold" : "text-black"
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/all-foods"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-400 font-bold" : "text-black"
+              }
+            >
+              All Foods
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/gallery"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-400 font-bold" : "text-black"
+              }
+            >
+              Gallery
+            </NavLink>
+          </li>
         </ul>
       </div>
 
       <div className="navbar-end gap-4 items-center">
         {user ? (
           <>
-            {/* Show profile image if available */}
-            <img
-              src={user.photoURL || "https://i.pravatar.cc/40"} // fallback avatar
-              alt="Profile"
-              title={user.displayName || "User"}
-              className="w-10 h-10 rounded-full border"
-            />
-            {/* Logout button */}
+            {/* Profile Image Dropdown */}
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full border">
+                  <img
+                    src={user.photoURL || "https://i.pravatar.cc/40"}
+                    alt="Profile"
+                    title={user.displayName || "User"}
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/my-foods" className="font-medium">My Foods</Link>
+                </li>
+                <li>
+                  <Link to="/add-food" className="font-medium">Add Food</Link>
+                </li>
+                <li>
+                  <Link to="/my-orders" className="font-medium">My Orders</Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Logout Button outside dropdown */}
             <button
               onClick={handleLogout}
-              className="btn btn-sm btn-outline btn-error"
+              className="btn btn-sm btn-outline btn-error ml-2"
             >
               Logout
             </button>
           </>
         ) : (
-          // Show login button if not logged in
           <Link to="/login" className="btn btn-sm btn-primary">
             Login
           </Link>
