@@ -61,7 +61,7 @@ const AllFoods = () => {
               <p className="text-gray-600 mb-2">{food.shortDescription}</p>
               <p className="font-semibold mb-2">Price: ${food.price}</p>
               <p className="mb-4">Quantity: {food.quantity}</p>
-              <Link to={`/foods/${food._id}`} className="btn btn-primary mt-auto">
+              <Link to={`/foods/${food._id}`} className="btn bg-yellow-400 mt-auto">
                 Details
               </Link>
             </div>

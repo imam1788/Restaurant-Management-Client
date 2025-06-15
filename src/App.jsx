@@ -1,4 +1,3 @@
-// src/App.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
@@ -8,18 +7,20 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import SingleFood from "./pages/SingleFood";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: <MainLayout></MainLayout>,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/all-foods", element: <AllFoods /> },
-      { path: "/gallery", element: <Gallery /> },
-      { path: "/login", element: <Login /> }, // ✅ FIXED
-      { path: "/register", element: <Register /> }
-    ],
+      { path: "/", element: <Home></Home> },
+      { path: "/all-foods", element: <AllFoods></AllFoods> },
+      { path: "/gallery", element: <Gallery></Gallery> },
+      { path: "/login", element: <Login></Login> },
+      { path: "/register", element: <Register></Register> },
+      { path: "/foods/:id", element: <SingleFood></SingleFood>}
+],
   },
 ]);
 

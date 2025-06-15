@@ -30,7 +30,7 @@ const Banner = () => {
         showThumbs={false}
         autoPlay
         infiniteLoop
-        interval={5000}
+        interval={3000}
         showStatus={false}
         swipeable
         emulateTouch
