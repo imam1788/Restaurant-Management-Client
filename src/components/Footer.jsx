@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-green-800 via-green-700 to-green-600 text-green-100 py-12 shadow-lg">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Logo & Description */}
+        
         <div>
           <h2 className="text-4xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
             Re<span className="text-yellow-400">sto</span>
@@ -16,7 +16,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
+        
         <div>
           <h3 className="text-2xl font-semibold mb-5 border-b border-green-600 pb-2 uppercase tracking-wide">
             Quick Links
@@ -35,7 +35,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact & Social */}
+        
         <div>
           <h3 className="text-2xl font-semibold mb-5 border-b border-green-600 pb-2 uppercase tracking-wide">
             Contact Us
