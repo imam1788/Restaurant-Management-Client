@@ -3,9 +3,9 @@ import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   return (
-    <div>
-      <Navbar />
-      <Outlet />
+    <div className="bg-gray-50">
+      <Navbar></Navbar>
+      <Outlet></Outlet>
     </div>
   );
 };

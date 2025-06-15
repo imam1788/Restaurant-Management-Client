@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar bg-base-100 shadow-md px-4 py-3">
+    <nav className="navbar shadow-md px-4 py-3">
       <div className="navbar-start">
         <NavLink
           to="/"
