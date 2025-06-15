@@ -84,7 +84,10 @@ const MyOrders = () => {
               </td>
               <td className="p-2 border">{order.foodName}</td>
               <td className="p-2 border">{order.quantity}</td>
-              <td className="p-2 border">${order.price}</td>
+              <td className="p-2 border">
+                ${order.price} × {order.quantity} = ${(order.price * order.quantity).toFixed(2)}
+              </td>
+
               <td className="p-2 border">{order.buyerName}</td>
               <td className="p-2 border">
                 {order.date
