@@ -67,12 +67,12 @@ const Navbar = () => {
       <div className="navbar-end gap-4 items-center">
         {user ? (
           <>
-            {/* Profile Image Dropdown */}
+
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full border">
                   <img
-                    src={user.photoURL || "https://i.pravatar.cc/40"}
+                    src={user.photoURL}
                     alt="Profile"
                     title={user.displayName || "User"}
                   />
@@ -94,7 +94,7 @@ const Navbar = () => {
               </ul>
             </div>
 
-            {/* Logout Button outside dropdown */}
+
             <button
               onClick={handleLogout}
               className="btn btn-sm btn-outline btn-error ml-2"

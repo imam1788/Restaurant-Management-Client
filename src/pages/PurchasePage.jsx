@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -8,6 +8,8 @@ const PurchasePage = () => {
   const [food, setFood] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { user } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:5000/foods/${id}`)
@@ -21,6 +23,7 @@ const PurchasePage = () => {
     const order = {
       foodId: id,
       foodName: food.foodName,
+      foodImage: food.foodImage, 
       price: food.price,
       quantity: parseInt(quantity),
       buyerName: user.displayName,
@@ -37,6 +40,7 @@ const PurchasePage = () => {
 
     if (res.ok) {
       toast.success("Purchase successful!");
+      navigate('/my-orders')
     } else {
       toast.error("Something went wrong. Try again.");
     }

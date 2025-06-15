@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SingleFood from "./pages/SingleFood";
 import PrivateRoute from "./routes/PrivateRoute";
 import PurchasePage from "./pages/PurchasePage";
+import MyOrders from "./pages/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,13 @@ const router = createBrowserRouter([
             <PurchasePage></PurchasePage>
           </PrivateRoute>
       },
+      {
+        path: "/my-orders",
+        element:
+          <PrivateRoute>
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+      }
     ],
   },
 ]);
