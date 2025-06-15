@@ -24,7 +24,7 @@ const Navbar = () => {
           className="text-4xl font-extrabold tracking-wide text-green-600 hover:text-green-800 transition duration-300"
         >
           <span className="text-black">Re</span>
-          <span className="text-green-600">sto</span>
+          <span className="text-yellow-400">sto</span>
         </NavLink>
       </div>
 
