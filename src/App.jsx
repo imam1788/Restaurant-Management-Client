@@ -8,19 +8,46 @@ import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import SingleFood from "./pages/SingleFood";
+import PrivateRoute from "./routes/PrivateRoute";
+import PurchasePage from "./pages/PurchasePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
-      { path: "/", element: <Home></Home> },
-      { path: "/all-foods", element: <AllFoods></AllFoods> },
-      { path: "/gallery", element: <Gallery></Gallery> },
-      { path: "/login", element: <Login></Login> },
-      { path: "/register", element: <Register></Register> },
-      { path: "/foods/:id", element: <SingleFood></SingleFood>}
-],
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
+        path: "/all-foods",
+        element: <AllFoods></AllFoods>
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/foods/:id",
+        element: <SingleFood></SingleFood>
+      },
+      {
+        path: "/purchase/:id",
+        element:
+          <PrivateRoute>
+            <PurchasePage></PurchasePage>
+          </PrivateRoute>
+      },
+    ],
   },
 ]);
 
