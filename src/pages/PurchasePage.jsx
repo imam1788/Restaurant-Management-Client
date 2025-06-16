@@ -23,7 +23,7 @@ const PurchasePage = () => {
     const order = {
       foodId: id,
       foodName: food.foodName,
-      foodImage: food.foodImage, 
+      foodImage: food.foodImage,
       price: food.price,
       quantity: parseInt(quantity),
       buyerName: user.displayName,
@@ -50,7 +50,9 @@ const PurchasePage = () => {
 
   return (
     <div className="max-w-xl mx-auto my-10 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4 text-center">Purchase Food</h2>
+      <div className="mb-8 text-center bg-green-100 py-6 rounded shadow">
+        <h1 className="text-4xl font-bold text-green-700">Purchase Now</h1>
+      </div>
       <form onSubmit={handlePurchase} className="space-y-4">
         <div>
           <label className="font-semibold">Food Name</label>
@@ -79,7 +81,7 @@ const PurchasePage = () => {
           <label className="font-semibold">Buyer Email</label>
           <input type="email" value={user.email} readOnly className="input input-bordered w-full" />
         </div>
-        <button type="submit" className="btn bg-green-500 hover:bg-green-600 text-white w-full">
+        <button type="submit" className="btn bg-yellow-500 hover:bg-yellow-600 text-white w-full">
           Purchase
         </button>
       </form>

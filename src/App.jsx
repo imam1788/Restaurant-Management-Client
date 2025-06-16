@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         path: "/purchase/:id",
         element:
           <PrivateRoute>
-            <MyFoods></MyFoods>
+            <PurchasePage></PurchasePage>
           </PrivateRoute>
       },
       {
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         path: "/my-foods",
         element:
           <PrivateRoute>
-            <MyFoodsPage></MyFoodsPage>
+            <MyFoods></MyFoods>
           </PrivateRoute>
       }
     ],
