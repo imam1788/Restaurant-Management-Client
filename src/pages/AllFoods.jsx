@@ -28,7 +28,7 @@ const AllFoods = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 pb-8">
       <div className="mb-8 text-center bg-green-100 py-6 rounded shadow">
         <h1 className="text-4xl font-bold text-green-700">All Foods</h1>
       </div>

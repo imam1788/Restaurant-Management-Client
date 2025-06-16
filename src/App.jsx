@@ -12,6 +12,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import PurchasePage from "./pages/PurchasePage";
 import MyOrders from "./pages/MyOrders";
 import AddFood from "./pages/AddFood";
+import MyFoods from "./pages/MyFoods";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
         path: "/purchase/:id",
         element:
           <PrivateRoute>
-            <PurchasePage></PurchasePage>
+            <MyFoods></MyFoods>
           </PrivateRoute>
       },
       {
@@ -63,6 +64,13 @@ const router = createBrowserRouter([
             <AddFood></AddFood>
           </PrivateRoute>
       },
+      {
+        path: "/my-foods",
+        element:
+          <PrivateRoute>
+            <MyFoodsPage></MyFoodsPage>
+          </PrivateRoute>
+      }
     ],
   },
 ]);

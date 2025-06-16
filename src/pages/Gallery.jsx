@@ -19,7 +19,7 @@ const Gallery = () => {
   const [index, setIndex] = useState(-1);
 
   return (
-    <div className="px-4 py-10 bg-green-50 min-h-screen">
+    <div className="px-4 pb-10 bg-green-50 min-h-screen">
       <div className="text-center bg-green-200 py-10 rounded shadow mb-10">
         <h1 className="text-5xl font-bold text-green-800">Gallery</h1>
       </div>
