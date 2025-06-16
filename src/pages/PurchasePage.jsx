@@ -8,7 +8,6 @@ const PurchasePage = () => {
   const [food, setFood] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { user } = useAuth();
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,8 +17,19 @@ const PurchasePage = () => {
       .catch(err => console.error("Failed to load food", err));
   }, [id]);
 
+  if (!food) return <div className="text-center mt-10">Loading...</div>;
+
+  const isOutOfStock = food.quantity === 0;
+  const isOwner = user.email === food?.addedBy?.email;
+
   const handlePurchase = async (e) => {
     e.preventDefault();
+
+    if (quantity > food.quantity) {
+      toast.error(`You cannot order more than ${food.quantity}`);
+      return;
+    }
+
     const order = {
       foodId: id,
       foodName: food.foodName,
@@ -28,6 +38,7 @@ const PurchasePage = () => {
       quantity: parseInt(quantity),
       buyerName: user.displayName,
       buyerEmail: user.email,
+      date: new Date(),
     };
 
     const res = await fetch("http://localhost:5000/purchase", {
@@ -40,19 +51,26 @@ const PurchasePage = () => {
 
     if (res.ok) {
       toast.success("Purchase successful!");
-      navigate('/my-orders')
+      navigate('/my-orders');
     } else {
       toast.error("Something went wrong. Try again.");
     }
   };
-
-  if (!food) return <div className="text-center mt-10">Loading...</div>;
 
   return (
     <div className="max-w-xl mx-auto my-10 p-6 bg-white rounded shadow">
       <div className="mb-8 text-center bg-green-100 py-6 rounded shadow">
         <h1 className="text-4xl font-bold text-green-700">Purchase Now</h1>
       </div>
+
+      {(isOutOfStock || isOwner) && (
+        <p className="text-red-600 text-center font-semibold mb-4">
+          {isOutOfStock
+            ? "This item is currently out of stock."
+            : "You cannot purchase your own food item."}
+        </p>
+      )}
+
       <form onSubmit={handlePurchase} className="space-y-4">
         <div>
           <label className="font-semibold">Food Name</label>
@@ -67,11 +85,16 @@ const PurchasePage = () => {
           <input
             type="number"
             value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
+            onChange={(e) =>
+              setQuantity(Math.min(food.quantity, Math.max(1, Number(e.target.value))))
+            }
             className="input input-bordered w-full"
             min="1"
+            max={food.quantity}
             required
+            disabled={isOutOfStock || isOwner}
           />
+          <p className="text-sm mt-1 text-gray-500">Max: {food.quantity}</p>
         </div>
         <div>
           <label className="font-semibold">Buyer Name</label>
@@ -81,7 +104,11 @@ const PurchasePage = () => {
           <label className="font-semibold">Buyer Email</label>
           <input type="email" value={user.email} readOnly className="input input-bordered w-full" />
         </div>
-        <button type="submit" className="btn bg-yellow-500 hover:bg-yellow-600 text-white w-full">
+        <button
+          type="submit"
+          className="btn bg-yellow-500 hover:bg-yellow-600 text-white w-full"
+          disabled={isOutOfStock || isOwner}
+        >
           Purchase
         </button>
       </form>
