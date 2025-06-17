@@ -7,7 +7,7 @@ const SingleFood = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/foods/${id}`)
+    fetch(`https://restaurant-management-server-liart.vercel.app/foods/${id}`)
       .then(res => res.json())
       .then(data => setFood(data))
       .catch(err => console.error(err));

@@ -7,7 +7,7 @@ const AllFoods = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/foods")
+    fetch("https://restaurant-management-server-liart.vercel.app/foods")
       .then((res) => res.json())
       .then((data) => {
         setFoods(data);

@@ -40,7 +40,7 @@ const AddFood = () => {
 
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:5000/foods', {
+      const res = await fetch('https://restaurant-management-server-liart.vercel.app/foods', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

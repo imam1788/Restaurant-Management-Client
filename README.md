@@ -4,8 +4,8 @@ A full-stack restaurant management web application that allows users to explore 
 
 ## 🌐 Live URL
 
-👉 [Visit the Website](https://your-live-site-url.com)  
-🌍 Server (API): [Visit Vercel Backend](https://your-vercel-server-url.com)
+👉 [Visit the Website](https://restaurant-management-91579.web.app)  
+🌍 Server (API): [Visit Vercel Backend](https://restaurant-management-server-liart.vercel.app)
 
 ## 🎯 Purpose
 

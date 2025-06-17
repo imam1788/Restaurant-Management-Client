@@ -12,7 +12,7 @@ const MyFoods = () => {
   useEffect(() => {
     if (!user) return;
 
-    fetch(`http://localhost:5000/my-foods?email=${user.email}`)
+    fetch(`https://restaurant-management-server-liart.vercel.app/my-foods?email=${user.email}`)
       .then(res => res.json())
       .then(data => {
         setMyFoods(data);
@@ -38,17 +38,17 @@ const MyFoods = () => {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
 
-    const { _id, ...updateData } = editingFood; // ✅ remove _id from the update payload
+    const { _id, ...updateData } = editingFood;
 
     try {
-      const response = await fetch(`http://localhost:5000/foods/${_id}`, {
+      const response = await fetch(`https://restaurant-management-server-liart.vercel.app/foods/${_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updateData),
       });
 
       const data = await response.json();
-      console.log('✅ Update result:', data);
+      // console.log('Update result:', data);
 
       if (data.modifiedCount > 0) {
         Swal.fire('Success!', 'Food updated successfully.', 'success');
@@ -61,7 +61,7 @@ const MyFoods = () => {
         setShowModal(false);
       }
     } catch (error) {
-      console.error('🔥 Update error:', error);
+      console.error(' Update error:', error);
     }
   };
 

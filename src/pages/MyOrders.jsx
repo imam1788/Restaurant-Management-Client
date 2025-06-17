@@ -13,7 +13,7 @@ const MyOrders = () => {
     if (!user?.email) return;
 
     setLoading(true);
-    fetch(`http://localhost:5000/purchase?buyerEmail=${user.email}`)
+    fetch(`https://restaurant-management-server-liart.vercel.app/purchase?buyerEmail=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
@@ -37,7 +37,7 @@ const MyOrders = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/purchase/${orderId}`, {
+        fetch(`https://restaurant-management-server-liart.vercel.app/purchase/${orderId}`, {
           method: 'DELETE',
         })
           .then((res) => {

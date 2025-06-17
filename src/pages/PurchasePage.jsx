@@ -11,7 +11,7 @@ const PurchasePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/foods/${id}`)
+    fetch(`https://restaurant-management-server-liart.vercel.app/foods/${id}`)
       .then(res => res.json())
       .then(data => setFood(data))
       .catch(err => console.error("Failed to load food", err));
@@ -41,7 +41,7 @@ const PurchasePage = () => {
       date: new Date(),
     };
 
-    const res = await fetch("http://localhost:5000/purchase", {
+    const res = await fetch("https://restaurant-management-server-liart.vercel.app/purchase", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
