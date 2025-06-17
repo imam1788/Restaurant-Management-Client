@@ -1,14 +1,13 @@
-// src/firebase.config.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBBaVYC5RRskB6VoWPYZS350OFCgpt3wSA",
-  authDomain: "restaurant-management-91579.firebaseapp.com",
-  projectId: "restaurant-management-91579",
-  storageBucket: "restaurant-management-91579.appspot.com",
-  messagingSenderId: "511004679990",
-  appId: "1:511004679990:web:043d8a006c0f2700b85d97"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);

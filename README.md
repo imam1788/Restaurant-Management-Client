@@ -1,12 +1,74 @@
-# React + Vite
+# Restaurant Management Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack restaurant management web application that allows users to explore foods, manage their food items, place orders, and view a photo gallery. It includes Firebase authentication, secure routing.
 
-Currently, two official plugins are available:
+## 🌐 Live URL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 [Visit the Website](https://your-live-site-url.com)  
+🌍 Server (API): [Visit Vercel Backend](https://your-vercel-server-url.com)
 
-## Expanding the ESLint configuration
+## 🎯 Purpose
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project was built as **Assignment 11** of a web development course. The goal was to create a fully functional MERN stack app with secure authentication, CRUD operations, private routes, and a responsive, user-friendly UI.
+
+---
+
+## 🚀 Key Features
+
+- User Registration and Login (Email/Password & Google)
+- Add, Update, Delete Food items
+- Purchase food with validation (stock, own-food restriction)
+- View personal food orders
+- Search foods by name
+- View top-selling foods
+- Responsive Design (Mobile-friendly)
+- SweetAlert2 and React Toastify notifications
+- Protected routes for user-only actions
+
+---
+
+## 🔐 Authentication
+
+- Firebase Authentication (Email/Password, Google)
+- Private routes for logged-in users only
+
+---
+
+## 📦 NPM Packages Used
+
+### 📁 Client (React)
+
+- `react` & `react-dom`
+- `react-router-dom`
+- `firebase`
+- `react-toastify`
+- `sweetalert2`
+- `moment`
+- `styled-components`
+- `react-icons`
+- `react-responsive-carousel`
+- `yet-another-react-lightbox`
+- `daisyui`
+- `tailwindcss`
+- `vite`
+- `@vitejs/plugin-react`
+
+### ⚙️ Dev Dependencies
+
+- `eslint`
+- `@tailwindcss/vite`
+- `@vitejs/plugin-react`
+
+---
+
+## 💻 Technologies Used
+
+- React.js (Vite)
+- Tailwind CSS + DaisyUI
+- Firebase Authentication
+- Express.js + MongoDB (Backend)
+
+---
+
+## 📁 Folder Structure
+

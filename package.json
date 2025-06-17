@@ -23,7 +23,6 @@
     "react-toastify": "^11.0.5",
     "styled-components": "^6.1.19",
     "sweetalert2": "^11.22.0",
-    "tailwindcss": "^4.1.10",
     "yet-another-react-lightbox": "^3.23.3"
   },
   "devDependencies": {
@@ -36,6 +35,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "tailwindcss": "^4.1.10",
     "vite": "^6.3.5"
   }
 }
