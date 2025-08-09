@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopFoods = () => {
   const [topFoods, setTopFoods] = useState([]);
 
   useEffect(() => {
+    AOS.init({ duration: 800, once: false });
+    
     fetch("https://restaurant-management-server-liart.vercel.app/foods")
       .then((res) => res.json())
       .then((data) => {
@@ -25,6 +29,7 @@ const TopFoods = () => {
           <div
             key={food._id}
             className="bg-white shadow rounded-lg p-4 flex flex-col"
+            data-aos="fade-up"
           >
             <img
               src={food.foodImage}
@@ -35,12 +40,13 @@ const TopFoods = () => {
             <p className="text-gray-600 mb-1">
               <strong>Price:</strong> ${food.price}
             </p>
-            <p className="text-gray-600 mb-1">
+            <p className="text-gray-600 mb-4">
               <strong>Sold:</strong> {food.purchaseCount} times
             </p>
             <Link
               to={`/foods/${food._id}`}
-              className="btn bg-yellow-400 hover:bg-yellow-500 text-black mt-auto"
+              className="btn bg-yellow-400 hover:bg-yellow-500 text-black mt-auto rounded"
+              aria-label={`View details about ${food.foodName}`}
             >
               Details
             </Link>
@@ -51,7 +57,8 @@ const TopFoods = () => {
       <div className="text-center mt-8">
         <Link
           to="/all-foods"
-          className="btn bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded"
+          className="btn bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded"
+          aria-label="See all foods"
         >
           See All Foods
         </Link>

@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Footer = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: false });
+  }, []);
+
   return (
     <footer className="bg-gradient-to-r from-green-800 via-green-700 to-green-600 text-green-100 py-12 shadow-lg">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-        
-        <div>
+
+        {/* Brand Info */}
+        <div data-aos="fade-up" data-aos-delay="100">
           <h2 className="text-4xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
             Re<span className="text-yellow-400">sto</span>
           </h2>
           <p className="text-green-300 max-w-md leading-relaxed">
-            Savor the taste of exquisite dishes delivered fast to your doorstep. 
+            Savor the taste of exquisite dishes delivered fast to your doorstep.
             Quality & flavor, our promise to you.
           </p>
         </div>
 
-        
-        <div>
+        {/* Quick Links */}
+        <div data-aos="fade-up" data-aos-delay="200">
           <h3 className="text-2xl font-semibold mb-5 border-b border-green-600 pb-2 uppercase tracking-wide">
             Quick Links
           </h3>
@@ -35,8 +42,8 @@ const Footer = () => {
           </ul>
         </div>
 
-        
-        <div>
+        {/* Contact Info */}
+        <div data-aos="fade-up" data-aos-delay="300">
           <h3 className="text-2xl font-semibold mb-5 border-b border-green-600 pb-2 uppercase tracking-wide">
             Contact Us
           </h3>
@@ -60,19 +67,24 @@ const Footer = () => {
           </p>
 
           <div className="flex space-x-6">
-            {[{
-              icon: <FaFacebookF size={22} />,
-              link: "https://facebook.com",
-            },{
-              icon: <FaTwitter size={22} />,
-              link: "https://twitter.com",
-            },{
-              icon: <FaInstagram size={22} />,
-              link: "https://instagram.com",
-            },{
-              icon: <FaLinkedinIn size={22} />,
-              link: "https://linkedin.com",
-            }].map(({icon, link}, idx) => (
+            {[
+              {
+                icon: <FaFacebookF size={22} />,
+                link: "https://facebook.com",
+              },
+              {
+                icon: <FaTwitter size={22} />,
+                link: "https://twitter.com",
+              },
+              {
+                icon: <FaInstagram size={22} />,
+                link: "https://instagram.com",
+              },
+              {
+                icon: <FaLinkedinIn size={22} />,
+                link: "https://linkedin.com",
+              },
+            ].map(({ icon, link }, idx) => (
               <a
                 key={idx}
                 href={link}
@@ -88,7 +100,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-12 text-center text-white text-sm font-mono tracking-wide font-bold">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="400"
+        className="mt-12 text-center text-white text-sm font-mono tracking-wide font-bold"
+      >
         &copy; {new Date().getFullYear()} Resto. All rights reserved.
       </div>
     </footer>

@@ -13,6 +13,9 @@ import PurchasePage from "./pages/PurchasePage";
 import MyOrders from "./pages/MyOrders";
 import AddFood from "./pages/AddFood";
 import MyFoods from "./pages/MyFoods";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +79,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
   return (
     <>
       <RouterProvider router={router} />

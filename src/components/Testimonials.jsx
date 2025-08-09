@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const testimonials = [
   {
@@ -40,23 +43,37 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+  }, []);
+
   return (
-    <div className="bg-green-50 py-10 px-4">
-      <h2 className="text-3xl font-bold mb-8 text-center text-green-800">What Our Customers Say</h2>
+    <section className="py-10 px-4">
+      <h2
+        className="text-3xl font-bold mb-8 text-center text-green-800"
+        data-aos="fade-up"
+      >
+        What Our Customers Say
+      </h2>
       <div className="max-w-5xl mx-auto grid gap-8 md:grid-cols-3">
         {testimonials.map(({ id, name, avatar, review }) => (
-          <div key={id} className="bg-white p-6 rounded-lg shadow text-center">
+          <div
+            key={id}
+            className="bg-white p-6 rounded-3xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+            data-aos="fade-up"
+            data-aos-delay={id * 100}
+          >
             <img
               src={avatar}
               alt={name}
-              className="w-20 h-20 mx-auto rounded-full mb-4 object-cover"
+              className="w-20 h-20 mx-auto rounded-full mb-4 object-cover border-2 border-yellow-400"
             />
-            <p className="italic mb-4">"{review}"</p>
+            <p className="italic mb-4 text-gray-700">"{review}"</p>
             <p className="font-semibold text-green-800">{name}</p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

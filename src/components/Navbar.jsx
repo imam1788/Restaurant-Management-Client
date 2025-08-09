@@ -19,13 +19,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 shadow-md"
-      style={{ backgroundColor: "#2C3E50" }} // Example: dark blue/navy primary color, replace with your brand color
-    >
-      {/* Container to align content with rest of page and add horizontal padding */}
+    <nav className="fixed top-0 left-0 right-0 z-50 shadow-md bg-gradient-to-r from-green-800 via-green-700 to-green-600">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo */}
         <NavLink
           to="/"
           className="text-3xl font-extrabold tracking-wide text-yellow-400 hover:text-yellow-300 transition duration-300"

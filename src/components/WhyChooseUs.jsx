@@ -1,10 +1,12 @@
-import React from 'react';
-import freshIcon from '../assets/fresh.png'
-import deliveryIcon from '../assets/delivery-bike.png'
-import priceIcon from '../assets/best-price.png'
-import chefIcon from '../assets/cooking.png'
-import contactIcon from '../assets/telephone.png'
-import earthIcon from '../assets/earth.png'
+import React, { useEffect } from "react";
+import freshIcon from '../assets/fresh.png';
+import deliveryIcon from '../assets/delivery-bike.png';
+import priceIcon from '../assets/best-price.png';
+import chefIcon from '../assets/cooking.png';
+import contactIcon from '../assets/telephone.png';
+import earthIcon from '../assets/earth.png';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const reasons = [
   {
@@ -46,8 +48,12 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: false });
+  }, []);
+
   return (
-    <section className="container mx-auto py-12 px-4 bg-green-50 rounded-lg shadow-md">
+    <section className="container mx-auto py-12 px-4">
       <h2 className="text-3xl font-bold mb-8 text-center text-green-800">
         Why Choose Us
       </h2>
@@ -55,9 +61,12 @@ const WhyChooseUs = () => {
         {reasons.map(({ id, title, description, icon }) => (
           <div
             key={id}
-            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
+            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center"
+            data-aos="fade-up"
           >
-            <img src={icon} alt={title} className="w-20 h-20 mb-4 mx-auto" />
+            <div className="bg-yellow-400 p-4 rounded-full mb-4 hover:scale-105 transform transition-transform duration-300">
+              <img src={icon} alt={title} className="w-16 h-16" />
+            </div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-700">{description}</p>
           </div>
