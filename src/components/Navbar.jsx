@@ -7,7 +7,6 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -20,140 +19,146 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar shadow-md px-4 py-3 relative">
-      <div className="navbar-start">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 shadow-md"
+      style={{ backgroundColor: "#2C3E50" }} // Example: dark blue/navy primary color, replace with your brand color
+    >
+      {/* Container to align content with rest of page and add horizontal padding */}
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        {/* Logo */}
         <NavLink
           to="/"
-          className="text-4xl font-extrabold tracking-wide text-green-600 hover:text-green-800 transition duration-300"
+          className="text-3xl font-extrabold tracking-wide text-yellow-400 hover:text-yellow-300 transition duration-300"
         >
-          <span className="text-black">Re</span>
-          <span className="text-yellow-400">sto</span>
+          <span>Re</span>
+          <span className="text-white">sto</span>
         </NavLink>
-      </div>
 
-      {/* Desktop Menu */}
-      <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1 gap-4 font-semibold">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "text-yellow-400 font-bold" : "text-black"
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/all-foods"
-              className={({ isActive }) =>
-                isActive ? "text-yellow-400 font-bold" : "text-black"
-              }
-            >
-              All Foods
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/gallery"
-              className={({ isActive }) =>
-                isActive ? "text-yellow-400 font-bold" : "text-black"
-              }
-            >
-              Gallery
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-
-      {/* Desktop User Menu */}
-      <div className="navbar-end hidden md:flex gap-4 items-center">
-        {user ? (
-          <>
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full border">
-                  <img
-                    src={user.photoURL}
-                    alt="Profile"
-                    title={user.displayName || "User"}
-                  />
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <Link to="/my-foods" className="font-medium">
-                    My Foods
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/add-food" className="font-medium">
-                    Add Food
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/my-orders" className="font-medium">
-                    My Orders
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <button
-              onClick={handleLogout}
-              className="btn btn-sm btn-outline btn-error ml-2"
-            >
-              Logout
-            </button>
-          </>
-        ) : (
-          <Link to="/login" className="btn btn-sm btn-primary">
-            Login
-          </Link>
-        )}
-      </div>
-
-      {/* Mobile Hamburger Button */}
-      <div className="navbar-end md:hidden">
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="btn btn-square btn-ghost"
-          aria-label="Toggle menu"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="inline-block w-6 h-6 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-8 font-semibold text-white">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
+            }
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={
-                isMenuOpen
-                  ? "M6 18L18 6M6 6l12 12" 
-                  : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
-          </svg>
-        </button>
+            Home
+          </NavLink>
+          <NavLink
+            to="/all-foods"
+            className={({ isActive }) =>
+              isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
+            }
+          >
+            All Foods
+          </NavLink>
+          <NavLink
+            to="/gallery"
+            className={({ isActive }) =>
+              isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
+            }
+          >
+            Gallery
+          </NavLink>
+          {/* Protected routes for logged in users */}
+          {user && (
+            <>
+              <NavLink
+                to="/my-foods"
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
+                }
+              >
+                My Foods
+              </NavLink>
+              <NavLink
+                to="/add-food"
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
+                }
+              >
+                Add Food
+              </NavLink>
+              <NavLink
+                to="/my-orders"
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
+                }
+              >
+                My Orders
+              </NavLink>
+            </>
+          )}
+        </div>
+
+        {/* User actions */}
+        <div className="hidden md:flex items-center space-x-4">
+          {user ? (
+            <>
+              <div className="w-10 h-10 rounded-full border border-yellow-400 overflow-hidden">
+                <img
+                  src={user.photoURL}
+                  alt="Profile"
+                  title={user.displayName || "User"}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <button
+                onClick={handleLogout}
+                className="btn btn-sm bg-yellow-400 hover:bg-yellow-500 border-none"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/login"
+              className="btn btn-sm bg-yellow-400 hover:bg-yellow-500 border-none"
+            >
+              Login
+            </Link>
+          )}
+        </div>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="btn btn-square btn-ghost text-white"
+            aria-label="Toggle menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="inline-block w-6 h-6 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d={
+                  isMenuOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
+                }
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu (only show on small screens) */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-base-100 shadow-lg md:hidden z-10 px-4 py-4">
-          <ul className="menu menu-vertical font-semibold gap-3">
+        <div className="md:hidden bg-[#2C3E50] px-6 py-4 shadow-lg">
+          <ul className="space-y-4 font-semibold text-white">
             <li>
               <NavLink
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-black"
+                  isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
                 }
               >
                 Home
@@ -164,7 +169,7 @@ const Navbar = () => {
                 to="/all-foods"
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-black"
+                  isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
                 }
               >
                 All Foods
@@ -175,20 +180,19 @@ const Navbar = () => {
                 to="/gallery"
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-black"
+                  isActive ? "text-yellow-400 font-bold" : "hover:text-yellow-300"
                 }
               >
                 Gallery
               </NavLink>
             </li>
-
-            {user ? (
+            {user && (
               <>
                 <li>
                   <Link
                     to="/my-foods"
                     onClick={() => setIsMenuOpen(false)}
-                    className="font-medium"
+                    className="hover:text-yellow-300"
                   >
                     My Foods
                   </Link>
@@ -197,7 +201,7 @@ const Navbar = () => {
                   <Link
                     to="/add-food"
                     onClick={() => setIsMenuOpen(false)}
-                    className="font-medium"
+                    className="hover:text-yellow-300"
                   >
                     Add Food
                   </Link>
@@ -206,7 +210,7 @@ const Navbar = () => {
                   <Link
                     to="/my-orders"
                     onClick={() => setIsMenuOpen(false)}
-                    className="font-medium"
+                    className="hover:text-yellow-300"
                   >
                     My Orders
                   </Link>
@@ -214,18 +218,19 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleLogout}
-                    className="btn btn-error w-full"
+                    className="btn btn-yellow-400 btn-filled w-30"
                   >
                     Logout
                   </button>
                 </li>
               </>
-            ) : (
+            )}
+            {!user && (
               <li>
                 <Link
                   to="/login"
                   onClick={() => setIsMenuOpen(false)}
-                  className="btn btn-primary w-full"
+                  className="btn btn-yellow-400 btn-filled w-30"
                 >
                   Login
                 </Link>
