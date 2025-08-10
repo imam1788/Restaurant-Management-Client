@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: 'about',
         Component: About
+      },
+      {
+        path: 'contact',
+        Component: Contact
       }
     ],
   },
