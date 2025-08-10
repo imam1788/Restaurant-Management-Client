@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import moment from "moment";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import Loader from "../components/Loader";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
@@ -53,7 +54,7 @@ const MyOrders = () => {
     });
   };
 
-  if (loading) return <p>Loading orders...</p>;
+  if (loading) return <Loader></Loader> ;
   if (orders.length === 0) return <p>No orders found.</p>;
 
   return (

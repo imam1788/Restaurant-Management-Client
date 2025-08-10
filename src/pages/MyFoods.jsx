@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import Loader from '../components/Loader';
 
 const MyFoods = () => {
   const { user } = useContext(AuthContext);
@@ -65,7 +66,7 @@ const MyFoods = () => {
     }
   };
 
-  if (loading) return <p>Loading your foods...</p>;
+  if (loading) return <Loader></Loader> ;
   if (!myFoods.length) return <p>No foods added yet.</p>;
 
   return (
