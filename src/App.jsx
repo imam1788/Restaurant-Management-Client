@@ -18,6 +18,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -83,9 +84,13 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         Component: Contact
-      }
+      },
     ],
   },
+  {
+    path: "*",
+    Component: ErrorPage
+  }
 ]);
 
 function App() {
