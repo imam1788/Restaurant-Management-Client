@@ -106,7 +106,7 @@ const PurchasePage = () => {
         </div>
         <button
           type="submit"
-          className="btn bg-yellow-500 hover:bg-yellow-600 text-white w-full"
+          className="btn bg-yellow-400 hover:bg-yellow-500 w-full"
           disabled={isOutOfStock || isOwner}
         >
           Purchase

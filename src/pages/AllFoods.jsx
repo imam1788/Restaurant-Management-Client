@@ -8,7 +8,7 @@ const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("default");
 
   useEffect(() => {
     AOS.init({ duration: 800, once: false });
@@ -31,13 +31,16 @@ const AllFoods = () => {
     (food.foodName ?? "").toLowerCase().includes(search.toLowerCase())
   );
 
-  const sortedFoods = filteredFoods.sort((a, b) => {
-    if (sortOrder === "asc") return a.price - b.price;
-    else return b.price - a.price;
-  });
+  const sortedFoods = [...filteredFoods];
+
+  if (sortOrder === "asc") {
+    sortedFoods.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    sortedFoods.sort((a, b) => b.price - a.price);
+  }
 
   if (loading) {
-    return <Loader></Loader> ;
+    return <Loader />;
   }
 
   return (
@@ -60,35 +63,36 @@ const AllFoods = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="input input-bordered w-full max-w-md focus:outline-none 
-    focus:ring-2 
-    focus:ring-yellow-400 
-    focus:border-yellow-400"
+            focus:ring-2 
+            focus:ring-yellow-400 
+            focus:border-yellow-400"
         />
 
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
           className="
-    bg-white 
-    border 
-    border-gray-300 
-    rounded-md 
-    px-4 
-    py-2 
-    shadow-sm 
-    focus:outline-none 
-    focus:ring-2 
-    focus:ring-yellow-400 
-    focus:border-yellow-400
-    cursor-pointer
-    transition
-    duration-200
-    max-w-xs
-  "
+            bg-white 
+            border 
+            border-gray-300 
+            rounded-md 
+            px-4 
+            py-2 
+            shadow-sm 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-yellow-400 
+            focus:border-yellow-400
+            cursor-pointer
+            transition
+            duration-200
+            max-w-xs
+          "
           aria-label="Sort foods by price"
         >
-          <option value="asc">Sort by price: Low to High</option>
-          <option value="desc">Sort by price: High to Low</option>
+          <option value="default">Sort by: Default</option>
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
         </select>
       </div>
 
@@ -100,7 +104,7 @@ const AllFoods = () => {
             <div
               key={food._id}
               className="rounded-lg shadow-md p-4 flex flex-col"
-              style={{ minHeight: "380px" }} // uniform card height
+              style={{ minHeight: "380px" }}
               data-aos="zoom-in"
             >
               <img

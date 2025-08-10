@@ -16,6 +16,7 @@ import MyFoods from "./pages/MyFoods";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import About from "./components/About";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <MyFoods></MyFoods>
           </PrivateRoute>
+      },
+      {
+        path: 'about',
+        Component: About
       }
     ],
   },

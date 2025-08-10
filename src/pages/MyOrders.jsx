@@ -4,6 +4,7 @@ import moment from "moment";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import Loader from "../components/Loader";
+import { Link } from "react-router";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
@@ -54,8 +55,31 @@ const MyOrders = () => {
     });
   };
 
-  if (loading) return <Loader></Loader> ;
-  if (orders.length === 0) return <p>No orders found.</p>;
+  if (loading) return <Loader></Loader>;
+  if (orders.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-white">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png"
+          alt="No orders"
+          className="w-28 h-28 mb-6 animate-bounce"
+        />
+        <h2 className="text-3xl font-bold text-green-700 mb-3">
+          No orders found
+        </h2>
+        <p className="text-gray-600 mb-6 max-w-sm">
+          Looks like no one’s hungry yet. Keep your kitchen ready for the next big order!
+        </p>
+        <Link
+          to="/"
+          className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-3 rounded-lg shadow-md transition duration-300"
+        >
+          Back to Home
+        </Link>
+      </div>
+    );
+  }
+
 
   return (
     <div className="container mx-auto px-4 pb-10">

@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
 
   const handleLogout = () => {
     logout()

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import Loader from '../components/Loader';
+import { Link } from 'react-router';
 
 const MyFoods = () => {
   const { user } = useContext(AuthContext);
@@ -66,12 +67,38 @@ const MyFoods = () => {
     }
   };
 
-  if (loading) return <Loader></Loader> ;
-  if (!myFoods.length) return <p>No foods added yet.</p>;
+  if (loading) return <Loader></Loader>;
+  if (!myFoods.length) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-white">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png"
+          alt="Empty plate"
+          className="w-24 h-24 mb-4 animate-bounce"
+        />
+        <h2 className="text-2xl font-bold text-green-700 mb-2">
+          No foods added yet
+        </h2>
+        <p className="text-gray-600 mb-4">
+          Your menu is feeling lonely. Let’s add some delicious dishes!
+        </p>
+        <Link
+          to="/add-food"
+          className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded-lg shadow-md transition duration-300"
+        >
+          Add Food
+        </Link>
+      </div>
+    );
+  }
+
 
   return (
     <div className='pb-10 px-4'>
-      <div className="mb-8 text-center bg-green-100 py-6 rounded shadow">
+      <div
+        className="mb-8 text-center bg-green-100 py-6 rounded shadow"
+        data-aos="fade-down"
+      >
         <h1 className="text-4xl font-bold text-green-700">My Foods</h1>
       </div>
 

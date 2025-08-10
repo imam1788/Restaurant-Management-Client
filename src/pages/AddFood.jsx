@@ -84,8 +84,8 @@ const AddFood = () => {
 
         <textarea className="textarea textarea-bordered w-full" name="shortDescription" placeholder="Short Description (ingredients, procedure, etc)" required></textarea>
 
-        <button type="submit" className="btn btn-success w-full" disabled={loading}>
-          {loading ? 'Adding...' : 'Add Item'}
+        <button type="submit" className="btn bg-yellow-400 hover:bg-yellow-500 w-full" disabled={loading}>
+          {loading ? 'Adding Food ...' : 'Add Food'}
         </button>
       </form>
     </div>
