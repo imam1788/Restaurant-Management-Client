@@ -19,6 +19,12 @@ import "aos/dist/aos.css";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorPage from "./pages/ErrorPage";
+import ReservationPage from "./components/ReservationPage";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import ManageOrders from "./pages/ManageOrders"
+import AdminRoute from "./routes/AdminRoute";
+import AdminChatDashboard from "./components/AdminChatDashboard";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +90,35 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         Component: Contact
+      },
+      {
+        path: 'reservation',
+        Component: ReservationPage
+      },
+      {
+        path: "/cart",
+        element: <Cart></Cart>
+      },
+      {
+        path: "/checkout",
+        element:
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+      },
+      {
+        path: "/manage-orders",
+        element:
+          <AdminRoute>
+            <ManageOrders></ManageOrders>
+          </AdminRoute>
+      },
+      {
+        path: "/admin/chat",
+        element:
+          <AdminRoute>
+            <AdminChatDashboard></AdminChatDashboard>
+          </AdminRoute>
       },
     ],
   },
